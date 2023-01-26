@@ -13,23 +13,23 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class RotateTest {
+class RotateCommandTest {
     @Mock
     private Rotatable rotatable;
     @Mock
     private Direction direction;
 
-    private Rotate rotate;
+    private RotateCommand rotateCommand;
 
     @BeforeEach
     void beforeEach() {
-        rotate = new Rotate(rotatable);
+        rotateCommand = new RotateCommand(rotatable);
     }
 
     @Test
     @DisplayName("Npe check test")
     void test1() {
-        assertThrows(NullPointerException.class, () -> new Rotate(null));
+        assertThrows(NullPointerException.class, () -> new RotateCommand(null));
     }
 
     @Test
@@ -37,7 +37,7 @@ class RotateTest {
     void test2() {
         when(rotatable.getDirection()).thenReturn(direction);
         when(direction.next(any(Integer.class))).thenReturn(direction);
-        rotate.execute();
+        rotateCommand.execute();
 
         verify(rotatable, times(1)).setDirection(direction);
     }
@@ -47,6 +47,6 @@ class RotateTest {
     void test4() {
         when(rotatable.getDirection()).thenReturn(null);
 
-        assertThrows(RuntimeException.class, () -> rotate.execute());
+        assertThrows(RuntimeException.class, () -> rotateCommand.execute());
     }
 }

@@ -16,11 +16,11 @@ public class ChangeAngularVelocityTest {
     @Mock
     private RotationVelocityChangeable rotationVelocityChangeable;
 
-    private RotationVelocityChange rotationVelocityChange;
+    private RotationVelocityChangeCommand rotationVelocityChangeCommand;
 
     @BeforeEach
     public void setup(){
-        rotationVelocityChange = new RotationVelocityChange(rotationVelocityChangeable);
+        rotationVelocityChangeCommand = new RotationVelocityChangeCommand(rotationVelocityChangeable);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class ChangeAngularVelocityTest {
         Mockito.when(rotationVelocityChangeable.getAngularVelocity()).thenReturn(STARTED_ROTATION_VELOCITY);
         Mockito.when(rotationVelocityChangeable.getAngularVelocityChange()).thenReturn(CHANGE_ROTATION_VELOCITY);
 
-        rotationVelocityChange.execute();
+        rotationVelocityChangeCommand.execute();
 
         Mockito.verify(rotationVelocityChangeable).getAngularVelocity();
         Mockito.verify(rotationVelocityChangeable).getAngularVelocityChange();

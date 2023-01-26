@@ -18,16 +18,16 @@ public class ChangeSpeedTest {
     @Mock
     private SpeedChangeable speedChangeable;
 
-    private SpeedChanger speedChanger;
+    private SpeedChangeCommand speedChangeCommand;
 
     @BeforeEach
     public void setup() {
-        speedChanger = new SpeedChanger(speedChangeable);
+        speedChangeCommand = new SpeedChangeCommand(speedChangeable);
     }
 
     @Test
     void shouldThrowExceptionIfSpeedChangeableNull() {
-        assertThrows(NullPointerException.class, () -> new SpeedChanger(null));
+        assertThrows(NullPointerException.class, () -> new SpeedChangeCommand(null));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class ChangeSpeedTest {
         Mockito.when(speedChangeable.getSpeedChange()).thenReturn(CHANGED_SPEED);
 
         //when
-        speedChanger.execute();
+        speedChangeCommand.execute();
 
         //then
         Mockito.verify(speedChangeable).getSpeed();
@@ -53,7 +53,7 @@ public class ChangeSpeedTest {
         Mockito.when(speedChangeable.getSpeedChange()).thenThrow(RuntimeException.class);
 
         //when - then exception
-        Assertions.assertThrows(RuntimeException.class, () -> speedChanger.execute());
+        Assertions.assertThrows(RuntimeException.class, () -> speedChangeCommand.execute());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ChangeSpeedTest {
         Mockito.when(speedChangeable.getSpeed()).thenThrow(RuntimeException.class);
 
         //when - then exception
-        Assertions.assertThrows(RuntimeException.class, () -> speedChanger.execute());
+        Assertions.assertThrows(RuntimeException.class, () -> speedChangeCommand.execute());
     }
 
     @Test
@@ -73,7 +73,7 @@ public class ChangeSpeedTest {
         Mockito.doThrow(new RuntimeException()).when(speedChangeable).setSpeed(Mockito.anyInt());
 
         //when - then exception
-        Assertions.assertThrows(RuntimeException.class, () -> speedChanger.execute());
+        Assertions.assertThrows(RuntimeException.class, () -> speedChangeCommand.execute());
     }
 
 }
