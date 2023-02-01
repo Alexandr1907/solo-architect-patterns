@@ -14,16 +14,16 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class MoveTest {
+class MoveCommandTest {
   @Mock
   private Movable movable;
 
-  private Move move;
+  private MoveCommand moveCommand;
 
 
   @BeforeEach
   public void setup() {
-    move = new Move(movable);
+    moveCommand = new MoveCommand(movable);
   }
 
   @Test
@@ -33,7 +33,7 @@ class MoveTest {
     Mockito.when(movable.getVelocity()).thenReturn(VELOCITY);
 
     //when
-    move.execute();
+    moveCommand.execute();
 
     //then
     Mockito.verify(movable).getPosition();
@@ -48,7 +48,7 @@ class MoveTest {
     Mockito.when(movable.getPosition()).thenThrow(RuntimeException.class);
 
     //when - then exception
-    Assertions.assertThrows(RuntimeException.class, () -> move.execute());
+    Assertions.assertThrows(RuntimeException.class, () -> moveCommand.execute());
   }
 
   @Test
@@ -57,7 +57,7 @@ class MoveTest {
     Mockito.when(movable.getVelocity()).thenThrow(RuntimeException.class);
 
     //when - then exception
-    Assertions.assertThrows(RuntimeException.class, () -> move.execute());
+    Assertions.assertThrows(RuntimeException.class, () -> moveCommand.execute());
   }
 
   @Test
@@ -68,7 +68,7 @@ class MoveTest {
     Mockito.doThrow(new RuntimeException()).when(movable).setPosition(Mockito.any());
 
     //when - then exception
-    Assertions.assertThrows(RuntimeException.class, () -> move.execute());
+    Assertions.assertThrows(RuntimeException.class, () -> moveCommand.execute());
   }
 
   @Test
@@ -77,7 +77,7 @@ class MoveTest {
     Mockito.when(movable.getVelocity()).thenReturn(VELOCITY);
 
     //when - then exception
-    Assertions.assertThrows(RuntimeException.class, () -> move.execute());
+    Assertions.assertThrows(RuntimeException.class, () -> moveCommand.execute());
   }
 
   @Test
@@ -86,7 +86,7 @@ class MoveTest {
     Mockito.when(movable.getPosition()).thenReturn(START_POSITION);
 
     //when - then exception
-    Assertions.assertThrows(RuntimeException.class, () -> move.execute());
+    Assertions.assertThrows(RuntimeException.class, () -> moveCommand.execute());
   }
 
 
