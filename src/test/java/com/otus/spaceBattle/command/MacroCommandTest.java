@@ -29,7 +29,7 @@ class MacroCommandTest {
     macro.execute();
 
     //then
-    InOrder inOrder = Mockito.inOrder((Object) commands);
+    InOrder inOrder = Mockito.inOrder(commands);
     for (Command command : commands) {
       inOrder.verify(command).execute();
     }
@@ -44,7 +44,7 @@ class MacroCommandTest {
     Assertions.assertThrows(RuntimeException.class, () -> macro.execute());
 
     //then
-    InOrder inOrder = Mockito.inOrder((Object) commands);
+    InOrder inOrder = Mockito.inOrder(commands);
     for (int i = 0; i < commands.length; i++) {
       if (i <= wrongCommandNumber) {
         inOrder.verify(commands[i]).execute();
