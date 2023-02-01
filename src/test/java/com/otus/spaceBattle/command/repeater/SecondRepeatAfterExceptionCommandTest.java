@@ -4,8 +4,8 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 import com.otus.spaceBattle.command.Command;
-import com.otus.spaceBattle.excepton.CommandException;
-import com.otus.spaceBattle.excepton.RepeatCommandException;
+import com.otus.spaceBattle.exception.CommandException;
+import com.otus.spaceBattle.exception.RepeatCommandException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
