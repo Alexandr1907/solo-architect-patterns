@@ -1,4 +1,4 @@
-package com.otus.spaceBattle.excepton;
+package com.otus.spaceBattle.exception;
 
 public class CommandException extends RuntimeException {
     public CommandException() {

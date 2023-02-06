@@ -1,8 +1,8 @@
 package com.otus.spaceBattle.command.repeater;
 
 import com.otus.spaceBattle.command.Command;
-import com.otus.spaceBattle.excepton.CommandException;
-import com.otus.spaceBattle.excepton.RepeatCommandException;
+import com.otus.spaceBattle.exception.CommandException;
+import com.otus.spaceBattle.exception.RepeatCommandException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

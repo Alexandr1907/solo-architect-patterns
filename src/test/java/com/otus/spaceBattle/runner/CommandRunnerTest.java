@@ -1,9 +1,7 @@
 package com.otus.spaceBattle.runner;
 
-import com.otus.spaceBattle.TestData;
 import com.otus.spaceBattle.command.Command;
 import com.otus.spaceBattle.exceptionHandler.MainExceptionHandler;
-import com.otus.spaceBattle.excepton.RepeatCommandException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import org.junit.jupiter.api.Test;
